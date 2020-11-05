@@ -1,0 +1,28 @@
+default:
+  suites:
+    default:
+      contexts:
+        - FeatureContext
+        - Drupal\DrupalExtension\Context\DrupalContext
+        - Drupal\DrupalExtension\Context\MinkContext
+  gherkin:
+    cache: ~
+  extensions:
+    DMore\ChromeExtension\Behat\ServiceContainer\ChromeExtension: ~
+    Behat\MinkExtension:
+      goutte: ~
+      base_url: http://localhost:8888/backend/
+      javascript_session: selenium2
+      selenium2:
+        wd_host: http://chrome:9515
+        capabilities: { 'chrome': {'switches':['--start-maximized','--disable-gpu','--headless']}}
+    Drupal\DrupalExtension:
+      blackbox: ~
+      api_driver: drupal
+      drupal:
+        drupal_root:  /
+      region_map:
+        header: "#header"
+        sidebar: "#sidebar-first"
+        content: "#content"
+        footer: ".site-footer"

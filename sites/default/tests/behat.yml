@@ -1,0 +1,27 @@
+default:
+  suites:
+    default:
+      contexts:
+        - FeatureContext
+        - Drupal\DrupalExtension\Context\DrupalContext
+        - Drupal\DrupalExtension\Context\MinkContext
+        - Drupal\DrupalExtension\Context\MessageContext
+        - Drupal\DrupalExtension\Context\DrushContext
+  extensions:
+    Drupal\MinkExtension:
+      goutte: ~
+      selenium2: ~
+      base_url: http://localhost:8888/backend
+    Drupal\DrupalExtension:
+      blackbox: ~
+      region_map:
+        header: ".region-header"
+        footer: ".region-footer"
+        bottom: ".region-bottom"
+        pagetitle: ".region-page-title"
+        content: ".region-content"
+        sidebar: ".region-sidebar"
+
+
+
+
